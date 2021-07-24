@@ -1,10 +1,11 @@
-package com.example.roomdatabasewithmvvm
+package com.example.roomdatabasewithmvvm.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
+import com.example.roomdatabasewithmvvm.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
