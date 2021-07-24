@@ -1,5 +1,6 @@
 package com.example.roomdatabasewithmvvm.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bumptech.glide.Glide
@@ -23,5 +24,11 @@ class ItemDetailsActivity : AppCompatActivity() {
         Glide.with(applicationContext)
             .load(image)
             .into(ivEntityImage)
+
+        ivArrowBack.setOnClickListener {
+            val intent = Intent(applicationContext,ShowItemActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 }

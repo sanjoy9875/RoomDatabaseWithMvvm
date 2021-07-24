@@ -6,16 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".view.ItemDetailsActivity">
 
+    <ImageView
+        android:id="@+id/ivArrowBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_20"
+        android:src="@drawable/ic_arrow_back"
+        app:layout_constraintBottom_toBottomOf="@id/tvItemDetail"
+        app:layout_constraintEnd_toStartOf="@id/tvItemDetail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvItemDetail" />
+
     <TextView
         android:id="@+id/tvItemDetail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dp_20"
+        android:layout_marginStart="@dimen/dp_8"
+        android:layout_marginTop="@dimen/dp_20"
         android:text="@string/item_detail"
         android:textColor="@color/black"
         android:textSize="@dimen/sp_20"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ivArrowBack"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
@@ -31,6 +43,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dp_20"
         android:text="@string/title_1"
+        android:textSize="@dimen/sp_20"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ivEntityImage" />
 
@@ -41,6 +55,7 @@
         android:layout_marginStart="@dimen/dp_20"
         android:layout_marginTop="@dimen/dp_20"
         android:text="@string/sub_title"
+        android:textSize="@dimen/sp_18"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvEntityTitle" />
 
@@ -48,8 +63,11 @@
         android:id="@+id/tvEntitySubTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dp_20"
+        android:layout_marginStart="@dimen/dp_20"
+        android:layout_marginEnd="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_16"
         android:text="@string/sub_title"
+        android:textSize="@dimen/sp_16"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvSubTitle" />
 

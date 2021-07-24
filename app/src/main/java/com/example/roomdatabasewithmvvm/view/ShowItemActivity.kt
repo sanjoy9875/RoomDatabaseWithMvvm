@@ -26,6 +26,7 @@ class ShowItemActivity : AppCompatActivity() ,OnItemClick{
     private lateinit var viewModel: EntityViewModel
     private lateinit var adapter:EntityAdapter
     private var entityList = mutableListOf<ResponseEntity>()
+    private lateinit var connectivityLiveData:ConnectivityLiveData
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,6 +34,8 @@ class ShowItemActivity : AppCompatActivity() ,OnItemClick{
         setContentView(R.layout.activity_show_item)
 
         supportActionBar!!.hide()
+
+        connectivityLiveData= ConnectivityLiveData(application)
 
         /**
          * shimmer effects starts here
@@ -73,11 +76,28 @@ class ShowItemActivity : AppCompatActivity() ,OnItemClick{
         })
 
         /**
-         * define a coroutine to get response from API
+         * Observing LiveData if network is Connected then only call API
+         * If Network not connected fetch the data from Database
          **/
-        CoroutineScope(Dispatchers.IO).launch {
-                viewModel.getResponse()
-        }
+        connectivityLiveData.observe(this, Observer {isAvailable->
+            when(isAvailable)
+            {
+                true->
+                    CoroutineScope(Dispatchers.IO).launch {
+                    viewModel.getResponse()
+                }
+                false->  viewModel.getEntity().observe(this, Observer {
+                    shimmerFrameLayout.visibility = View.GONE
+                    shimmerFrameLayout.stopShimmer()
+                    recyclerView.visibility = View.VISIBLE
+                    entityList.clear()
+                    entityList.addAll(it)
+                    adapter.notifyDataSetChanged()
+
+                })
+            }
+        })
+
 
 
         /**

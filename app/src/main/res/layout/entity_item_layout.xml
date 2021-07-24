@@ -6,8 +6,8 @@
 
     <ImageView
         android:id="@+id/ivItemImage"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="@dimen/dp_60"
+        android:layout_height="@dimen/dp_60"
         android:layout_marginTop="@dimen/dp_5"
         android:src="@drawable/ic_launcher_background"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,6 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp_20"
+        android:textStyle="bold"
         android:text="@string/title_1"
         app:layout_constraintBottom_toTopOf="@id/tvItemSubTitle"
         app:layout_constraintStart_toEndOf="@id/ivItemImage"
