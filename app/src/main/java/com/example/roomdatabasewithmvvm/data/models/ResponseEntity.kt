@@ -1,4 +1,4 @@
-package com.example.roomdatabasewithmvvm.models
+package com.example.roomdatabasewithmvvm.data.models
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

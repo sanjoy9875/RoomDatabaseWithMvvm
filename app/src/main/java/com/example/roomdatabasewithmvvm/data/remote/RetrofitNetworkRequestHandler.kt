@@ -1,4 +1,4 @@
-package com.example.roomdatabasewithmvvm.remote
+package com.example.roomdatabasewithmvvm.data.remote
 
 import retrofit2.HttpException
 import java.net.SocketTimeoutException
