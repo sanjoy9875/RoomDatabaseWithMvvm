@@ -5,23 +5,25 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import com.example.roomdatabasewithmvvm.data.models.ResponseEntity
 import com.example.roomdatabasewithmvvm.repository.EntityRepository
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
 class EntityViewModel(val repository: EntityRepository) : ViewModel(){
 
-    fun getResponse() : LiveData<List<ResponseEntity>>{
-
-        return liveData(Dispatchers.IO){
-            val result = repository.getResponse()
-            emit(result.data!!)
+    /**
+     * Getting the response from api
+     * */
+    fun getResponse(){
+        CoroutineScope(Dispatchers.IO).launch {
+            repository.getResponse()
         }
     }
 
-    fun addEntity(responseEntity: List<ResponseEntity>){
-        repository.addEntity(responseEntity)
-    }
-
+    /**
+     * getting the list of ResponseEntity
+     * */
     fun getEntity(): LiveData<List<ResponseEntity>> {
         return repository.getEntity()
     }

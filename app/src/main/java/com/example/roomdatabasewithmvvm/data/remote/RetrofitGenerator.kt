@@ -12,7 +12,7 @@ class RetrofitGenerator {
             HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
         fun getInstance(): Retrofit {
             return Retrofit.Builder()
-                .baseUrl("https://api.jsonbin.io")
+                .baseUrl("https://gist.githubusercontent.com")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(OkHttpClient.Builder().addInterceptor(httpLoggingInterceptor).build())
                 .build()

@@ -17,19 +17,22 @@ class EntityRepository(val entityDAO: EntityDAO) {
     val api = RetrofitGenerator.getInstance().create(APIService::class.java)
 
     val responseHandler = ResponseHandler()
+    private var databaseList = mutableListOf<ResponseEntity>()
 
-    suspend fun getResponse() : Resource<List<ResponseEntity>> {
-        val result = api.getEntity(CONTENT_TYPE)
-
-        return responseHandler.handleSuccess(result)
-    }
-
-    fun addEntity(responseEntity: List<ResponseEntity>){
-        CoroutineScope(Dispatchers.IO).launch{
-            entityDAO.addEntity(responseEntity)
+    /**
+     * This function will call our API & give us the response
+     * */
+    suspend fun getResponse()  {
+        CoroutineScope(Dispatchers.IO).launch {
+            val result = api.getEntity(CONTENT_TYPE)
+            databaseList.addAll(result)
+            entityDAO.addEntity(databaseList)
         }
     }
 
+    /**
+     * Give us the list of ResponseEntity
+     **/
     fun getEntity(): LiveData<List<ResponseEntity>> {
         return entityDAO.getEntity()
     }

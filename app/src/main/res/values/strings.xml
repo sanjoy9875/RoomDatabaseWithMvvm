@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">RoomDatabaseWithMvvm</string>
+
+    <string name="item_detail">Item Detail</string>
+    <string name="title_1">Title 1</string>
+    <string name="sub_title">Sub Title</string>
+    <string name="item_list">Item List</string>
+    <string name="search_hint">Search Title or Description</string>
+
 </resources>
