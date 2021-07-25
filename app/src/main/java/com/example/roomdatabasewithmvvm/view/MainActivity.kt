@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.View
 import com.example.roomdatabasewithmvvm.R
+import com.github.ybq.android.spinkit.SpinKitView
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -17,14 +18,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         supportActionBar!!.hide()
-
-        progressBar.visibility = View.VISIBLE
+        spin_kit.visibility = View.VISIBLE
 
         Handler().postDelayed({
             val intent = Intent(this@MainActivity, ShowItemActivity::class.java)
             startActivity(intent)
             finish()
-            progressBar.visibility = View.GONE
+            spin_kit.visibility = View.GONE
+
         }, splashTimeOut.toLong())
 
     }

@@ -129,6 +129,9 @@ class ShowItemActivity : AppCompatActivity() ,OnItemClick{
             if (it.title.toLowerCase().contains(text)){
                 tempList.add(it)
             }
+            else if (it.subTitle.toLowerCase().contains(text)){
+                tempList.add(it)
+            }
         }
         adapter.filteredList(tempList)
     }
